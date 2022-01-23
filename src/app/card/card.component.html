@@ -1,0 +1,55 @@
+<div class="flex flex-col justify-center mt-5">
+    <label for="modal-portfolio" class="btn btn-secondary text-center btn-xs modal-button">Add portfolio</label>
+
+    <div class="card card-bordered max-w-sm mt-5" *ngFor="let portfolio of portfolio, let myIndex=index;">
+        <figure class="">
+            <img class="" src="{{ portfolio.img }}">
+        </figure>
+        <div class="card-body">
+            <h2 class="card-title">{{portfolio.title}}</h2>
+            <p>{{ portfolio.description }}</p>
+            <div class="justify-end card-actions">
+
+
+
+                <button class="btn btn-xs btn-secondary" (click)="removeItem(myIndex)">Delete</button>
+
+            </div>
+        </div>
+    </div>
+
+    <input type="checkbox" id="modal-portfolio" class="modal-toggle">
+
+    <div class="modal">
+        <div class="modal-box">
+
+            <form [formGroup]="formulario" class="form-control">
+                <label class="title">
+                    <span class="label-text">Titulo</span>
+                </label>
+                <input formControlName="title" type="text" name="title" id="title" placeholder="Titulo" class="input input-bordered input-sm">
+
+                <label class="label">
+                    <span class="label-text">Description</span>
+                </label>
+                <textarea formControlName="description" class="textarea h-24 textarea-bordered" placeholder="description"></textarea>
+
+                <label class="title">
+                    <span class="label-text">Imagen</span>
+                </label>
+                <input formControlName="img" type="text" name="img" id="img" placeholder="img" class="input input-bordered input-sm">
+
+
+                <div class="modal-action">
+                    <label (click)="addNew()" type="submit" for="modal-portfolio" class="btn btn-primary">Accept</label>
+                    <label for="modal-portfolio" class="btn">Close</label>
+                </div>
+
+
+            </form>
+
+
+
+        </div>
+    </div>
+</div>
